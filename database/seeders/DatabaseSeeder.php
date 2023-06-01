@@ -6,7 +6,9 @@ namespace Database\Seeders;
 
 use App\Models\Question;
 use Illuminate\Database\Seeder;
+// use Database\Seeder\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +23,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        User::create([
+            'name' => 'Himanshu Thakkar',
+            'email' => 'himanshu@studylinkclasses.com',
+            'password' => Hash::make('abcd1234')
+        ]);
 
         User::factory(10)->create()->each(function($user) {
             for($i=0; $i<random_int(5,10); $i++){

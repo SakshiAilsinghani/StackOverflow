@@ -6,7 +6,13 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">All Questions</div>
+                    <div class="card-header d-flex justify-content-between">
+                        <div><h1>All Questions</h1></div>
+                        <div class="align-self-center mb-2">
+                            <a href="{{route('questions.create')}}" class="btn btn-warning">Ask A question</a>
+                        </div>
+
+                    </div>
                     @foreach($questions as $question)
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -30,8 +36,15 @@
                                         <span class="text-muted">{{ $question->created_date }}</span>
                                     </p>
                                     <p>
-                                        {{ \Illuminate\Support\Str::limit($question->body, 250) }}
+                                        {{  \Illuminate\Support\Str::limit($question->body, 250) }}
                                     </p>
+
+                                    <div class="d-flex justify-content-between">
+                                        {{-- <h4>
+                                            <a href="{{ $question->url }}">{{ $question->title }}</a>
+                                        </h4> --}}
+                                        <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-outline-info">Edit</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
